@@ -5,18 +5,31 @@ require_relative 'employee'
 require_relative 'tax_calculator'
 require_relative 'liability'
 
-@employees = []
-
-CSV.foreach('employee_taxes.csv', headers: true) do |row|
-  employee = nil
-  employee = Employee.new(row)
-  tax_calculator = TaxCalculator.new(employee)
-  tax_calculator.liability
-  @employees << employee
-
+def get_employees_tax_liability
+  CSV.foreach('employee_taxes.csv', headers: true) do |row|
+    #tax_calculator = nil
+    employee = nil
+    employee = Employee.new(row)
+    liability_calc = TaxCalculator.liability(employee)
+    display(employee, liability_calc)
+  end
 end
 
-puts @employees
+def display(employee, liabilities)
+  if liabilities.amount_owed <= 0
+    puts "#{employee.first_name} #{employee.last_name} has a tax liability of $#{(liabilities.amount_owed).abs}"
+  else
+    puts "#{employee.first_name} #{employee.last_name} will receive a refund of $#{liabilities.amount_owed}"
+  end
+end
+
+get_employees_tax_liability
+
+#def display_tax_liability
+#  if get_employees_tax_liability > 0
+#    puts ""
+#
+#end
 
 
 
