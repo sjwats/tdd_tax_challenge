@@ -7,7 +7,6 @@ require_relative 'liability'
 
 def get_employees_tax_liability
   CSV.foreach('employee_taxes.csv', headers: true) do |row|
-    #tax_calculator = nil
     employee = nil
     employee = Employee.new(row)
     liability_calc = TaxCalculator.liability(employee)
@@ -25,11 +24,6 @@ end
 
 get_employees_tax_liability
 
-#def display_tax_liability
-#  if get_employees_tax_liability > 0
-#    puts ""
-#
-#end
 
 
 
