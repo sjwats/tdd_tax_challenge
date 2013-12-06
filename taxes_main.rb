@@ -10,15 +10,15 @@ def get_employees_tax_liability
     employee = nil
     employee = Employee.new(row)
     liability_calc = TaxCalculator.liability(employee)
-    display(employee, liability_calc)
+    display(liability_calc)
   end
 end
 
-def display(employee, liabilities)
+def display(liabilities)
   if liabilities.amount_owed <= 0
-    puts "#{employee.first_name} #{employee.last_name} has a tax liability of $#{(liabilities.amount_owed).abs}"
+    puts "#{liabilities.employee.first_name} #{liabilities.employee.last_name} has a tax liability of $#{(liabilities.amount_owed).abs}"
   else
-    puts "#{employee.first_name} #{employee.last_name} will receive a refund of $#{liabilities.amount_owed}"
+    puts "#{liabilities.employee.first_name} #{liabilities.employee.last_name} will receive a refund of $#{liabilities.amount_owed}"
   end
 end
 
