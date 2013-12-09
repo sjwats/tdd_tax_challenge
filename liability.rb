@@ -5,10 +5,9 @@
 require_relative 'employee'
 require_relative 'tax_calculator'
 
-class Liability #used as a "Value Object" <--Google it
+class Liability #used as a "Value Object"
   attr_reader :employee, :amount_due, :amount_owed
   #allows you to access or "Call" these variables like methods
-  #outside of the
 
   def initialize(employee, amount_due, amount_owed)
     @employee = employee

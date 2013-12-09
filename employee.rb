@@ -12,6 +12,4 @@ class Employee
     @tax_paid = attributes['tax_paid'].to_f ||= 0
     @tax_rate = attributes['tax_rate'].to_f ||= 0
   end
-
-
 end
