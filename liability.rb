@@ -2,17 +2,16 @@
 #The employee attribute should be an instance of the Employee class.
 #The amount_due represents taxes that must be paid by the employee.
 #The amount_owed represents the refund.
+require_relative 'employee'
+require_relative 'tax_calculator'
 
-class Liability
+class Liability #used as a "Value Object"
   attr_reader :employee, :amount_due, :amount_owed
+  #allows you to access or "Call" these variables like methods
 
-  def intialize(employee)
+  def initialize(employee, amount_due, amount_owed)
     @employee = employee
-    @amount_due = employee['amount_due']
-    @amount_owed = employee['amount_owed']
-
+    @amount_due = amount_due
+    @amount_owed = amount_owed
   end
-
-
-
 end

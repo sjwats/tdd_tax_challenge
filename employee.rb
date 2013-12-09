@@ -5,13 +5,11 @@
 
 class Employee
   attr_reader :last_name, :first_name, :annual_income, :tax_paid, :tax_rate
-  def intialize(attributes)
-    @last_name = attributes['last_name'] ||=['Last Name']
-    @first_name = attributes['first_name'] ||=['First Name']
-    @annual_income = attributes['annual_income'] ||= 0
-    @tax_paid = attributes['tax_paid'] ||= 0
-    @tax_rate = attributes['tax_rate'] ||= 0
+  def initialize(attributes)
+    @last_name = attributes['last_name'] ||="[Last Name]"
+    @first_name = attributes['first_name'] ||="[First Name]"
+    @annual_income = attributes['annual_income'].to_f ||= 0
+    @tax_paid = attributes['tax_paid'].to_f ||= 0
+    @tax_rate = attributes['tax_rate'].to_f ||= 0
   end
-
-
 end
